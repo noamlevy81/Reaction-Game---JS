@@ -1,0 +1,93 @@
+<html>
+    <head>
+	    <title>JavaScript</title>
+		<style type="text/css">
+			
+			#shape {
+				width: 100px;
+				height: 100px;
+				background-color:red;
+				display: none;
+				position:relative;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Test Your Reactions!</h1>
+		
+		<h2>click on  the appearing shapes as fast as you can!</h2>
+		<p id="resLine"> it took you: <span id="result"></span> </p>
+		<div id ="shape"></div>
+		<script type="text/javascript">
+				var start =null;
+			//prototypes
+			function timeMeasure(start){
+			
+				return ((new Date().getTime()) - start)/1000;
+			}
+			function makeShapeDisappear(id){
+			
+				document.getElementById(id).style.display = "none";
+			}
+			
+			function makeShapeAppear(){
+			
+				setTimeout(randomShape,3000*Math.random());
+				
+			}
+			
+			function randomShape(){
+				
+				var shape = document.getElementById("shape");
+				var size = 250*Math.random()+50;
+				shape.style.display = "block";
+				shape.style.width = size;
+				shape.style.height = size;
+				shape.style.backgroundColor = getRandomColor();
+				
+				shape.style.top = Math.random()*400 + "px";
+				shape.style.left = Math.random()*700 + "px";
+				
+				if(Math.random() < 0.5){
+					shape.style.borderRadius = "50%";
+				}else{
+					shape.style.borderRadius = "0";
+				}
+				start = new Date().getTime();
+			}
+			
+			function getRandomColor() {
+				var letters = '0123456789ABCDEF';
+				var color = '#';
+				for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+				}
+				
+				return color;
+			}
+			//--------------------------------------------------------------
+			//code
+		
+		
+			
+			makeShapeAppear();	
+			
+			
+			document.getElementById("shape").onclick = function(){
+			
+				makeShapeDisappear("shape");
+				
+				document.getElementById("result").innerHTML = timeMeasure(start)+"s";
+				makeShapeAppear();	
+			}
+			
+			
+			
+		</script>
+	</body>
+
+
+
+
+
+</html>
