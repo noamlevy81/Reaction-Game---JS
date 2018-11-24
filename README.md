@@ -1,6 +1,6 @@
 # Reaction-Game---JS
 
-Clone this rope to your local machine using 
+Clone this rope to your local machine using https://github.com/noamlevy81/Reaction-Game---JS.git
 to get started.
 
 In order to run the game, open the file on your browser.
